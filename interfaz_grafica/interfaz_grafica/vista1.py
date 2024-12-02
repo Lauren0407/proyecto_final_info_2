@@ -12,6 +12,7 @@ from PyQt5.QtGui import QIntValidator
 
 #PRUEBA
 #holaaa
+#hola por 2
 
 class VentanaPrincipal(QDialog):
     def __init__(self, ppal=None): #lazamiento de la ventana
