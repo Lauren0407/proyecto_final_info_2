@@ -10,8 +10,6 @@ from PyQt5.uic import loadUi
 from PyQt5.QtWidgets import QMessageBox 
 from PyQt5.QtGui import QIntValidator
 
-#PRUEBA
-
 class VentanaPrincipal(QDialog):
     def __init__(self, ppal=None): #lazamiento de la ventana
         super(VentanaPrincipal,self).__init__();
