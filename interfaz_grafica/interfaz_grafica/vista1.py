@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QIntValidator
 
 #PRUEBA
+#holaaa
 
 class VentanaPrincipal(QDialog):
     def __init__(self, ppal=None): #lazamiento de la ventana
