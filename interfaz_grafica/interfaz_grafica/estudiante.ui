@@ -42,7 +42,7 @@
     <string>Selecciona la especilidad que deseas estudiar </string>
    </property>
   </widget>
-  <widget class="QComboBox" name="especiali">
+  <widget class="QComboBox" name="especialidad">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -53,7 +53,27 @@
    </property>
    <item>
     <property name="text">
-     <string/>
+     <string>Cardiología</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Neurología</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Gastroenterología</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Neumología</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Infectología</string>
     </property>
    </item>
   </widget>

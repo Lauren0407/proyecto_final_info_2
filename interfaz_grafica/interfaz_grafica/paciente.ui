@@ -26,7 +26,7 @@
     <string>Ver examen</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="cancelar">
    <property name="geometry">
     <rect>
      <x>270</x>

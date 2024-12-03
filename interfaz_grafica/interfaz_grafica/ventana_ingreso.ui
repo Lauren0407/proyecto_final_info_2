@@ -55,26 +55,6 @@
     <string>Contraseña:</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="usu_ing">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>70</y>
-     <width>171</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="ced_ing">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>120</y>
-     <width>171</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="cargo">
    <property name="geometry">
     <rect>
@@ -91,7 +71,7 @@
   <widget class="QComboBox" name="boton_cargo">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>180</x>
      <y>170</y>
      <width>171</width>
      <height>31</height>
@@ -115,6 +95,26 @@
      <string>Estudiante</string>
     </property>
    </item>
+  </widget>
+  <widget class="QLineEdit" name="usu_ing">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>69</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ced_ing">
+   <property name="geometry">
+    <rect>
+     <x>182</x>
+     <y>119</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>600</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Ventana Médico</string>
   </property>
   <widget class="QPushButton" name="ver">
    <property name="geometry">
@@ -62,7 +62,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Actulizar examen </string>
+    <string>Actualizar examen</string>
    </property>
   </widget>
   <widget class="QPushButton" name="cancelar">
@@ -76,6 +76,19 @@
    </property>
    <property name="text">
     <string>Cancelar</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="datos_dicom">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>30</y>
+     <width>250</width>
+     <height>230</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Área para mostrar los metadatos del archivo DICOM</string>
    </property>
   </widget>
  </widget>
