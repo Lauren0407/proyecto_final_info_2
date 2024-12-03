@@ -4,6 +4,11 @@ Spyder Editor
 
 This is a temporary script file.
 """
+
+#Lauren Cordero Ramos
+#Paula Garcia
+#Isabela Muñoz
+#Proyecto Final 
 import os
 import pydicom
 import mysql.connector
