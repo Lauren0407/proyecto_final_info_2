@@ -34,7 +34,7 @@ class VentanaPrincipal(QDialog):
 
     def abrir_ventana_ingreso(self):
         ventana_ingreso = VentanaIngreso(self)
-        ventana_ingreso.asignarCoordinador(self.__mi_controlador)  # Pasar controlador
+        ventana_ingreso.asignarCoordinador(self.__mi_controlador)
         self.hide()
         ventana_ingreso.show()
 
@@ -125,11 +125,10 @@ class VentanaMedico(QDialog):
         msg.setIcon(QMessageBox.Information)
         msg.setInformativeText(mensaje)
         msg.setWindowTitle("Resultado de la operación")
-        msg.exec_()  # Usa exec_() para bloquear hasta que el usuario cierre el mensaje
-
+        msg.exec_()
         
         ventana = VentanaMedico2(self)
-        ventana.asignarCoordinador(self.__mi_controlador)  # Asegura la asignación
+        ventana.asignarCoordinador(self.__mi_controlador)
         ventana.show()
         self.hide()
         print('Final guardar info')
@@ -142,7 +141,7 @@ class DICOMView:
         """Muestra los metadatos del archivo DICOM."""
         print("\n--- Metadatos del Archivo DICOM ---")
         for key, value in metadata.items():
-            if key != "pixel_array":  # Excluir la matriz de píxeles de los metadatos mostrados
+            if key != "pixel_array": 
                 print(f"{key.replace('_', ' ').capitalize()}: {value}")
 
     def display_image(self, pixel_array):
@@ -174,7 +173,7 @@ class VentanaPaciente(QDialog):
         self.__mi_controlador = coordinador
     
     def setup(self):
-        self.ver_examen.clicked.connect(self.abrir_ver)  # Asocia el clic al método abrir_ver
+        self.ver_examen.clicked.connect(self.abrir_ver)  
         self.cancelar.clicked.connect(self.opcion_cancelar)
 
     def opcion_cancelar(self):
@@ -227,11 +226,9 @@ class VentanaMedico2(QDialog):
         loadUi('vent_medico.ui', self)
         self.setup()
         self.__mi_ventana_padre=ppal
-        self.__mi_controlador=controlador
-       
-        
+        self.__mi_controlador=controlador    
         self.datos_dicom = None
-        self.datos_dicom = self.findChild(QTextEdit, "datos_dicom")  # Enlaza el widget datos_dicom
+        self.datos_dicom = self.findChild(QTextEdit, "datos_dicom")
         
 
         
@@ -268,18 +265,18 @@ class VentanaMedico2(QDialog):
         ventana.show()
     def recibir_Cargar(self, ced, ruta):
         try:
-            resultado = self.__mi_controlador.AgregarExamen(ced, ruta)  # Asegúrate de que este método esté implementado correctamente
+            resultado = self.__mi_controlador.AgregarExamen(ced, ruta)
             msg = QMessageBox(self)
             msg.setIcon(QMessageBox.Information)
             msg.setInformativeText(resultado)
             msg.setWindowTitle("Resultado de la operación")
             msg.exec_()
 
-            # Cargar y mostrar los metadatos
+            
             dicom_model = dicom(os.path.dirname(ruta))
             metadata = dicom_model.obtener_dicom(ruta)
             if metadata:
-                # Validar antes de usar self.datos_dicom
+          
                 if self.datos_dicom is not None:
                     self.datos_dicom.setText(self.formatear_metadatos(metadata))
                 else:
@@ -290,7 +287,7 @@ class VentanaMedico2(QDialog):
             print(f"Error al guardar información: {e}")
 
     def formatear_metadatos(self, metadatos):
-        # Aquí formateas los metadatos para mostrar en la ventana emergente
+    
         resultado = f"Nombre del paciente: {metadatos['patient_name']}\n"
         resultado += f"Modalidad: {metadatos['modality']}\n"
         resultado += f"Fecha del estudio: {metadatos['study_date']}\n"
@@ -301,21 +298,20 @@ class VentanaMedico2(QDialog):
             
     def abrir_archivo_dicom(self, ruta):
         try:
-            ruta = ruta.strip()  # Elimina caracteres no deseados como '\n'
-            dicom_model = dicom(os.path.dirname(ruta))  # Instancia el modelo con la carpeta de los DICOM
-            _, archivos = dicom_model.cargar_archivos()  # Carga los archivos en el modelo
-            metadata = dicom_model.obtener_dicom(ruta)  # Obtiene los metadatos del archivo específico
+            ruta = ruta.strip() 
+            dicom_model = dicom(os.path.dirname(ruta))  
+            _, archivos = dicom_model.cargar_archivos()  
+            metadata = dicom_model.obtener_dicom(ruta)  
             
-            # Almacena los datos en un atributo separado
+          
             self.metadata_dicom = metadata
             
-            # Muestra los metadatos en el widget gráfico
+        
             if self.datos_dicom is not None:
-                self.datos_dicom.setText(str(metadata))  # Actualiza el QLabel o QTextEdit con los datos
+                self.datos_dicom.setText(str(metadata)) 
             else:
                 print("Error: QLabel o QTextEdit no inicializado.")
-            
-            # Mostrar la imagen si está disponible
+        
             if metadata.get("pixel_array") is not None:
                 self.mostrar_imagen(metadata["pixel_array"])
         except Exception as e:
@@ -364,7 +360,6 @@ class VentanaMedico2(QDialog):
                 msg.setWindowTitle("Resultado de la operación")
                 msg.exec_()
     
-                # Si hay exámenes, permite abrirlos (ejemplo: abrir el primer archivo DICOM)
                 if examenes:
                     primera_ruta = examenes[0]
                     self.abrir_archivo_dicom(primera_ruta)
@@ -408,8 +403,7 @@ class VentanaCardiologia(QDialog):
         self.setup()
         self.__mi_ventana_padre=ppal
     def setup(self):
-            
-        # Aquí puedes conectar los botones o realizar otras configuraciones
+      
         self.buttonBox.accepted.connect(self.opcion_aceptar)
         self.buttonBox.rejected.connect(self.opcion_cancelar)
  

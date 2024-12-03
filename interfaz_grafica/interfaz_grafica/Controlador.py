@@ -5,17 +5,13 @@ from PyQt5.QtWidgets import QApplication
 
 class Principal:
     def __init__(self):
-        # Inicializa la aplicación PyQt
+       
         self.__app = QApplication(sys.argv)
-        
-      
-        # Instancias del modelo
         self.__Base = BaseDatos()
         self.__Med = Medico("Nombre", "Especialidad", self.__Base)
         self.__Pac = Paciente("")
         self.__Es = Estudiante()
-        self.__Modelo = dicom(dicom_dir=r"C:\Users\PAULA GARCIA\Desktop\PROYECTO INFORMATICA II\dicom_dir")
-        
+        self.__Modelo = dicom(dicom_dir=r"C:\Users\PAULA GARCIA\Desktop\PROYECTO INFORMATICA II\dicom_dir")   
         self.__VP = VentanaPrincipal()
         self.__VI = VentanaIngreso()
         self.__VM = VentanaMedico()
@@ -27,11 +23,6 @@ class Principal:
         self.__VA=VentanaActualizar()
         self.__VVP= VentanaVerPac()
         self.__VVM= VentanaVerMed()
-
-
-       
-        
-        # Instancia del coordinador (controlador)
         self.__mi_controlador = Coordinador(
             self.__VP, self.__Base, self.__Med, self.__Pac, self.__Es, self.__Modelo, self.__VMM, self.__VVM
         )
@@ -40,8 +31,7 @@ class Principal:
         if self.__mi_controlador is None:
             print("Error: El controlador no está inicializado correctamente.")
         else:
-        # Asignar el controlador a las vistas
-    
+       
             self.__VP.asignarCoordinador(self.__mi_controlador)
             self.__VI.asignarCoordinador(self.__mi_controlador)
             self.__VM.asignarCoordinador(self.__mi_controlador)
@@ -57,7 +47,6 @@ class Principal:
 
             
     def main(self):
-        # Mostrar la ventana principal y ejecutar la aplicación
         self.__VP.show()
         sys.exit(self.__app.exec_())
         
@@ -75,7 +64,6 @@ class Coordinador:
         self.__VentanaVer= VentanaVerMed
 
     def RecibirInfoUsuario(self, cargo, usu, contra):
-        # Verificamos credenciales
         if self.__mi_base_datos.validar_usuario(usu, contra, cargo):
             return "Usuario autenticado exitosamente."
         else:
@@ -92,7 +80,7 @@ class Coordinador:
         if self.__mi_medico is None:
             return "Error: El médico no ha sido inicializado."
     
-        # Recuperar exámenes de memoria
+
         examenes = self.__mi_medico.ver_examenes(cedula)
         if examenes:
             resultado = "Exámenes del paciente:\n"
@@ -105,7 +93,7 @@ class Coordinador:
 
      
     def formatear_metadatos(self, metadatos):
-        # Aquí formateas los metadatos para mostrar en la ventana emergente
+
         resultado = f"Nombre del paciente: {metadatos['patient_name']}\n"
         resultado += f"Modalidad: {metadatos['modality']}\n"
         resultado += f"Fecha del estudio: {metadatos['study_date']}\n"

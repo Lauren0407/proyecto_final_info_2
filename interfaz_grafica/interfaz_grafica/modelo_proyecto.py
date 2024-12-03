@@ -37,7 +37,7 @@ class BaseDatos:
                 "Estudiante": []
             }
 
-        self.usuarios = {}  # Para guardar usuarios (médicos, pacientes, estudiantes)
+        self.usuarios = {} 
 
 
     def obtener_examenes(self, cedula):
@@ -47,7 +47,7 @@ class BaseDatos:
         result = self.mycursor.fetchall()
         
         if result:
-            # Devuelve una lista de tuplas (ruta, fecha)
+           
             return [{"ruta": examen[0], "fecha": examen[1]} for examen in result]
         else:
             return None
